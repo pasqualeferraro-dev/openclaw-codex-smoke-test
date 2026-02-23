@@ -1,0 +1,93 @@
+/* Minimal, framework-free styles */
+
+:root {
+  --bg: #0b1020;
+  --fg: #eef2ff;
+  --muted: #b7c1ff;
+  --card: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.12);
+  --btn-bg: rgba(255, 255, 255, 0.12);
+  --btn-bg-hover: rgba(255, 255, 255, 0.18);
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="light"] {
+  --bg: #f7f8ff;
+  --fg: #0b1020;
+  --muted: #3f4a7a;
+  --card: rgba(11, 16, 32, 0.04);
+  --border: rgba(11, 16, 32, 0.12);
+  --btn-bg: rgba(11, 16, 32, 0.08);
+  --btn-bg-hover: rgba(11, 16, 32, 0.12);
+  --shadow: 0 14px 40px rgba(11, 16, 32, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--fg);
+  background: radial-gradient(1200px 800px at 20% 10%, rgba(125, 211, 252, 0.16), transparent 50%),
+    radial-gradient(900px 650px at 90% 20%, rgba(167, 139, 250, 0.18), transparent 50%),
+    var(--bg);
+}
+
+.page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.card {
+  width: min(680px, 100%);
+  padding: clamp(22px, 4vw, 36px);
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  margin: 0 0 18px;
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--btn-bg);
+  color: inherit;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--btn-bg-hover);
+}
+
+.hint {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 0.95em;
+}
