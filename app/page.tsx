@@ -5,6 +5,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import ThemeProvider from "../components/ThemeProvider";
 import ThemeToggle from "../components/ThemeToggle";
+import { projects } from "../data/projects";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 10 },
@@ -56,6 +57,10 @@ function Section({
 
 export default function HomePage() {
   const shouldReduceMotion = useReducedMotion();
+  const featuredProjects = React.useMemo(
+    () => projects.filter((project) => project.featured).slice(0, 3),
+    [],
+  );
   const heroMotion = shouldReduceMotion
     ? {}
     : {
@@ -132,10 +137,10 @@ export default function HomePage() {
 
           <Section id="projects" title="Featured Projects">
             <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-              {[1, 2, 3].map((i) => (
+              {featuredProjects.map((project) => (
                 <motion.a
-                  key={i}
-                  href="#"
+                  key={project.id}
+                  href={`/projects?project=${encodeURIComponent(project.id)}`}
                   whileHover={cardHover}
                   transition={{ duration: 0.15 }}
                   className="group rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm transition hover:shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-ink-500 dark:border-white/10 dark:bg-slate-950"
@@ -143,10 +148,10 @@ export default function HomePage() {
                   <div className="flex items-start justify-between">
                     <div>
                       <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
-                        Project {i}
+                        {project.category} • {project.year}
                       </p>
                       <h3 className="mt-2 text-lg font-semibold text-slate-900 dark:text-slate-100">
-                        Placeholder title
+                        {project.title}
                       </h3>
                     </div>
                     <span className="text-slate-400 transition group-hover:text-slate-600 dark:group-hover:text-slate-300">
@@ -154,16 +159,15 @@ export default function HomePage() {
                     </span>
                   </div>
                   <p className="mt-3 text-sm text-slate-700 dark:text-slate-200">
-                    A short, friendly description. Replace this with a real
-                    project once ready.
+                    {project.tagline}
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {["Next.js", "TS", "Tailwind"].map((t) => (
+                    {project.stack.slice(0, 3).map((item) => (
                       <span
-                        key={t}
+                        key={item}
                         className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700 dark:bg-white/10 dark:text-slate-200"
                       >
-                        {t}
+                        {item}
                       </span>
                     ))}
                   </div>
