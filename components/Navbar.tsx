@@ -14,7 +14,7 @@ const homeLinks: NavLink[] = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Featured" },
   { href: "/projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
+  { href: "/skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -22,6 +22,16 @@ const projectsLinks: NavLink[] = [
   { href: "/", label: "Home" },
   { href: "#featured", label: "Featured" },
   { href: "#all-projects", label: "All Projects" },
+  { href: "/skills", label: "Skills" },
+];
+
+const skillsLinks: NavLink[] = [
+  { href: "/", label: "Home" },
+  { href: "#skills-overview", label: "Overview" },
+  { href: "#skills-map", label: "Skill Map" },
+  { href: "#how-i-work", label: "How I Work" },
+  { href: "#contact", label: "Contact" },
+  { href: "/projects", label: "Projects" },
 ];
 
 type NavbarLinkProps = {
@@ -50,7 +60,12 @@ export default function Navbar() {
   const [open, setOpen] = React.useState(false);
   const shouldReduceMotion = useReducedMotion();
   const pathname = usePathname();
-  const links = pathname === "/projects" ? projectsLinks : homeLinks;
+
+  const links = React.useMemo(() => {
+    if (pathname === "/projects") return projectsLinks;
+    if (pathname === "/skills") return skillsLinks;
+    return homeLinks;
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-slate-950/40">

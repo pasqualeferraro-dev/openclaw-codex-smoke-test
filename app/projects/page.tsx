@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Navbar from "../../components/Navbar";
 import ThemeProvider from "../../components/ThemeProvider";
 import ProjectsExperience from "../../components/projects/ProjectsExperience";
@@ -14,7 +15,9 @@ export default function ProjectsPage() {
     <ThemeProvider>
       <div className="min-h-dvh">
         <Navbar />
-        <ProjectsExperience projects={projects} />
+        <Suspense fallback={null}>
+          <ProjectsExperience projects={projects} />
+        </Suspense>
       </div>
     </ThemeProvider>
   );
