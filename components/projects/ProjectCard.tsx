@@ -3,7 +3,7 @@ import type { Project } from "../../data/projects";
 type ProjectCardProps = {
   project: Project;
   layout?: "featured" | "grid";
-  onOpen: (project: Project, trigger: HTMLButtonElement) => void;
+  onOpen: (project: Project, trigger: HTMLButtonElement | null) => void;
 };
 
 export default function ProjectCard({

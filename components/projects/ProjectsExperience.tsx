@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { Project } from "../../data/projects";
 import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
@@ -10,10 +11,14 @@ type ProjectsExperienceProps = {
 };
 
 export default function ProjectsExperience({ projects }: ProjectsExperienceProps) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [activeFilter, setActiveFilter] = React.useState("All");
   const [activeProject, setActiveProject] = React.useState<Project | null>(null);
   const closeButtonRef = React.useRef<HTMLButtonElement | null>(null);
   const lastTriggerRef = React.useRef<HTMLButtonElement | null>(null);
+  const hasHandledInitialQueryRef = React.useRef(false);
 
   const categories = React.useMemo(
     () => ["All", ...Array.from(new Set(projects.map((project) => project.category)))],
@@ -32,15 +37,44 @@ export default function ProjectsExperience({ projects }: ProjectsExperienceProps
 
   const closeProject = React.useCallback(() => {
     setActiveProject(null);
-  }, []);
+
+    if (!searchParams.has("project") && !searchParams.has("modal")) {
+      return;
+    }
+
+    const nextSearchParams = new URLSearchParams(searchParams.toString());
+    nextSearchParams.delete("project");
+    nextSearchParams.delete("modal");
+
+    const nextQuery = nextSearchParams.toString();
+    const nextUrl = nextQuery ? `${pathname}?${nextQuery}` : pathname;
+    router.replace(nextUrl, { scroll: false });
+  }, [pathname, router, searchParams]);
 
   const openProject = React.useCallback(
-    (project: Project, trigger: HTMLButtonElement) => {
-      lastTriggerRef.current = trigger;
+    (project: Project, trigger: HTMLButtonElement | null) => {
+      if (trigger) {
+        lastTriggerRef.current = trigger;
+      }
       setActiveProject(project);
     },
     [],
   );
+
+  React.useEffect(() => {
+    if (hasHandledInitialQueryRef.current) {
+      return;
+    }
+    hasHandledInitialQueryRef.current = true;
+
+    const projectId = searchParams.get("project") ?? searchParams.get("modal");
+    if (!projectId) return;
+
+    const deepLinkedProject = projects.find((project) => project.id === projectId);
+    if (!deepLinkedProject) return;
+
+    setActiveProject(deepLinkedProject);
+  }, [projects, searchParams]);
 
   React.useEffect(() => {
     if (!activeProject) {
