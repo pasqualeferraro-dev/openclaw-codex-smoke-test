@@ -3,6 +3,7 @@
 import * as React from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import Navbar from "../components/Navbar";
+import ExperienceTimeline from "../components/ExperienceTimeline";
 import ThemeProvider from "../components/ThemeProvider";
 import ThemeToggle from "../components/ThemeToggle";
 import { projects } from "../data/projects";
@@ -133,6 +134,15 @@ export default function HomePage() {
               Long version: I’m happiest when I can connect product intent to
               pragmatic engineering, and iterate with real users.
             </p>
+          </Section>
+
+          <Section id="experience" title="Experience">
+            <p className="max-w-3xl text-sm leading-relaxed text-slate-700 dark:text-slate-200 sm:text-base">
+              A snapshot of work that blends product strategy with practical
+              execution. Each role focused on measurable outcomes, reliable systems,
+              and teams shipping with confidence.
+            </p>
+            <ExperienceTimeline />
           </Section>
 
           <Section id="projects" title="Featured Projects">
