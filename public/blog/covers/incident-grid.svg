@@ -1,0 +1,25 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#0B1220"/>
+  <rect x="130" y="120" width="1340" height="660" rx="28" fill="#111A2D" stroke="#24324F" stroke-width="2"/>
+  <path d="M130 250H1470" stroke="#24324F" stroke-width="1.5"/>
+  <path d="M130 380H1470" stroke="#24324F" stroke-width="1.5"/>
+  <path d="M130 510H1470" stroke="#24324F" stroke-width="1.5"/>
+  <path d="M130 640H1470" stroke="#24324F" stroke-width="1.5"/>
+  <path d="M430 120V780" stroke="#24324F" stroke-width="1.5"/>
+  <path d="M730 120V780" stroke="#24324F" stroke-width="1.5"/>
+  <path d="M1030 120V780" stroke="#24324F" stroke-width="1.5"/>
+  <path d="M1330 120V780" stroke="#24324F" stroke-width="1.5"/>
+  <rect x="190" y="180" width="460" height="160" rx="16" fill="url(#panel1)" opacity="0.82"/>
+  <rect x="760" y="438" width="590" height="210" rx="16" fill="url(#panel2)" opacity="0.92"/>
+  <circle cx="1270" cy="210" r="120" fill="#22D3EE" opacity="0.14"/>
+  <defs>
+    <linearGradient id="panel1" x1="190" y1="180" x2="650" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6872FF"/>
+      <stop offset="1" stop-color="#C084FC"/>
+    </linearGradient>
+    <linearGradient id="panel2" x1="760" y1="438" x2="1350" y2="648" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#6872FF"/>
+    </linearGradient>
+  </defs>
+</svg>

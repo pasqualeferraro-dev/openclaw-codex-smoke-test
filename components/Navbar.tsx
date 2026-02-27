@@ -15,14 +15,23 @@ const homeLinks: NavLink[] = [
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Featured" },
   { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
   { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];
 
 const projectsLinks: NavLink[] = [
   { href: "/", label: "Home" },
+  { href: "/blog", label: "Blog" },
   { href: "#featured", label: "Featured" },
   { href: "#all-projects", label: "All Projects" },
+];
+
+const blogLinks: NavLink[] = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Latest" },
+  { href: "/blog/studio", label: "Studio" },
 ];
 
 type NavbarLinkProps = {
@@ -51,7 +60,11 @@ export default function Navbar() {
   const [open, setOpen] = React.useState(false);
   const shouldReduceMotion = useReducedMotion();
   const pathname = usePathname();
-  const links = pathname === "/projects" ? projectsLinks : homeLinks;
+  const links = pathname.startsWith("/blog")
+    ? blogLinks
+    : pathname === "/projects"
+      ? projectsLinks
+      : homeLinks;
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-slate-950/40">

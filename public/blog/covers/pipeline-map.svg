@@ -1,0 +1,17 @@
+<svg width="1400" height="840" viewBox="0 0 1400 840" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="840" rx="24" fill="#0F172A"/>
+  <rect x="90" y="290" width="250" height="260" rx="18" fill="#1E293B" stroke="#334155"/>
+  <rect x="420" y="230" width="260" height="380" rx="18" fill="#1E293B" stroke="#334155"/>
+  <rect x="770" y="180" width="260" height="480" rx="18" fill="#1E293B" stroke="#334155"/>
+  <rect x="1110" y="250" width="210" height="340" rx="18" fill="#1E293B" stroke="#334155"/>
+  <text x="150" y="360" fill="#CBD5E1" font-size="28" font-family="sans-serif">Ingestion</text>
+  <text x="470" y="320" fill="#CBD5E1" font-size="28" font-family="sans-serif">Validation</text>
+  <text x="840" y="300" fill="#CBD5E1" font-size="28" font-family="sans-serif">Warehouse</text>
+  <text x="1150" y="360" fill="#CBD5E1" font-size="28" font-family="sans-serif">Marts</text>
+  <path d="M340 420H420" stroke="#6872FF" stroke-width="8" stroke-linecap="round"/>
+  <path d="M680 420H770" stroke="#6872FF" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1030 420H1110" stroke="#6872FF" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="382" cy="420" r="12" fill="#38BDF8"/>
+  <circle cx="724" cy="420" r="12" fill="#38BDF8"/>
+  <circle cx="1068" cy="420" r="12" fill="#38BDF8"/>
+</svg>
